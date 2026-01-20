@@ -1,0 +1,30 @@
+# Server Port
+server:
+  port: 8080
+
+# Spring Application Name
+spring:
+  application:
+     name: asia-logistics
+  cache: redis
+
+  data:
+    redis:
+      host: ${SPRING_REDIS_HOST:localhost}
+      port: ${SPRING_REDIS_PORT:6379}
+      timeout: 200ms
+
+# Spring Doc
+springdoc:
+  packages-to-scan : com.asia.logistics
+  paths-to-match: /api/**
+
+# Actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    enable:
+      all: true

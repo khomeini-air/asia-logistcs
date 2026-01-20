@@ -1,0 +1,25 @@
+services:
+  asia-logistics:
+    build: .
+    container_name: asia-logistics
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+    environment:
+      SPRING_REDIS_HOST: redis
+    networks:
+      - asia-network
+    restart: always
+
+  redis:
+    image: redis:7-alpine
+    container_name: asia-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - asia-network
+    restart: always
+networks:
+  asia-network:
+    driver: bridge
